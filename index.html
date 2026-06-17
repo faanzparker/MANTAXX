@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MANTAX</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+      font-family: Arial;
+    }
+    #loginBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background: #0d1117;
+      color: white;
+    }
+    input {
+      padding: 15px;
+      width: 300px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      background: #161b22;
+      color: white;
+      font-size: 18px;
+      text-align: center;
+    }
+    button {
+      padding: 15px 40px;
+      border: none;
+      border-radius: 8px;
+      background: #238636;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #loading {
+      display: none;
+      font-size: 24px;
+      color: #58a6ff;
+    }
+    #videoBox {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginBox">
+    <h2 style="font-size: 32px; margin-bottom: 20px;">MANTAX ACCESS</h2>
+    <input type="text" id="username" placeholder="Masukkan Username">
+    <button onclick="login()">MASUK</button>
+    <div id="loading">Loading video...</div>
+  </div>
+  
+  <div id="videoBox">
+    <video id="zenitsuVideo" src="zenitsu.mp4" playsinline></video>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const loginBox = document.getElementById('loginBox');
+      const loading = document.getElementById('loading');
+      const videoBox = document.getElementById('videoBox');
+      const video = document.getElementById('zenitsuVideo');
+      
+      if(user === 'MANTAXBYYANZ123') {
+        loading.style.display = 'block';
+        setTimeout(() => {
+          loginBox.style.display = 'none'; // ilangin input
+          videoBox.style.display = 'block'; // munculin video full layar
+          video.play(); // auto play
+        }, 2000); // loading 2 detik
+      } else {
+        alert('Username salah!');
+      }
+    }
+    
+    // Enter buat submit
+    document.getElementById('username').addEventListener('keypress', function(e) {
+      if(e.key === 'Enter') login();
+    });
+  </script>
+</body>
+  </html>
